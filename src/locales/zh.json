@@ -11,7 +11,7 @@
     "hero": {
       "title_prefix": "自我进化的",
       "title_suffix": "Rust 智能体系统",
-      "description": "一个在工作中不断变强的系统。不可变的 Rust 宿主保证稳定性，可进化的 Rhai 技能实现持续改进。",
+      "description": "一个在工作中不断变强的系统。轻量级的 Rust 宿主保证稳定性，可进化的 Rhai 技能实现持续改进。",
       "get_started": "开始使用",
       "view_arch": "查看架构"
     },
