@@ -9,13 +9,21 @@ export default function HomePage() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div
-          className="absolute inset-0 bg-cover bg-no-repeat blur-none scale-100 opacity-100"
-  style={{
-    backgroundImage: "url('/story-bg.jpg')",
-    backgroundPosition: "calc(50% + 100px) calc(50% - 300px)",
-  }}
-        />
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{ objectPosition: 'calc(50% + 100px) calc(50% - 300px)' }}
+          onLoadedMetadata={(e) => {
+            e.currentTarget.defaultPlaybackRate = 0.7;
+            e.currentTarget.playbackRate = 0.7;
+          }}
+        >
+          <source src="/bg72.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/25" />
       </div>
 
@@ -84,7 +92,7 @@ export default function HomePage() {
       </section>
 
       {/* Core Value Props */}
-      <section className="py-24 bg-card/30 border-y border-border">
+      <section className="py-24 bg-card/30  border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <FeatureCard
