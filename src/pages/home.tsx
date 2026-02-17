@@ -10,8 +10,11 @@ export default function HomePage() {
     <div className="min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat blur-none scale-100 opacity-100"
-          style={{ backgroundImage: "url('/story-bg.jpg')" }}
+          className="absolute inset-0 bg-cover bg-no-repeat blur-none scale-100 opacity-100"
+  style={{
+    backgroundImage: "url('/story-bg.jpg')",
+    backgroundPosition: "calc(50% + 100px) calc(50% - 300px)",
+  }}
         />
         <div className="absolute inset-0 bg-black/25" />
       </div>
@@ -200,7 +203,7 @@ export default function HomePage() {
 
 function FeatureCard({ icon: Icon, title, description }: { icon: any, title: string, description: string }) {
   return (
-    <div className="p-8 rounded-2xl bg-background border border-border hover:border-rust/50 transition-colors group">
+    <div className="p-8 rounded-2xl bg-background/75 border border-border hover:border-rust/50 transition-colors group">
       <div className="w-12 h-12 rounded-lg bg-rust/10 flex items-center justify-center mb-6 text-rust group-hover:scale-110 transition-transform">
         <Icon size={24} />
       </div>
@@ -216,7 +219,7 @@ function FlowStep({ icon: Icon, title, description, color }: { icon: any, title:
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="relative z-10 flex flex-col items-center text-center p-6 bg-card border border-border rounded-xl shadow-xl hover:scale-105 transition-transform duration-300 min-h-[220px]"
+      className="relative z-10 flex flex-col items-center text-center p-6 bg-card/85 border border-border rounded-xl shadow-xl hover:scale-105 transition-transform duration-300 min-h-[220px]"
     >
       <div className={`w-16 h-16 rounded-full bg-background border-4 border-card flex items-center justify-center mb-6 ${color} shadow-lg shrink-0`}>
         <Icon size={28} />
