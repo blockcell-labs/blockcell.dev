@@ -1,0 +1,335 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "architecture": "Architecture",
+    "innovation": "Innovation",
+    "docs": "Getting Started",
+    "hub": "Community Hub"
+  },
+  "home": {
+    "hero": {
+      "title_prefix": "Self-Evolving",
+      "title_suffix": "Rust Agent System",
+      "description": "A system that grows stronger in production. Immutable Rust host ensures stability, while evolving Rhai skills deliver continuous improvement.",
+      "get_started": "Get Started",
+      "view_arch": "View Architecture"
+    },
+    "value_props": {
+      "evolution": {
+        "title": "Self-Evolution",
+        "desc": "Errors become lessons. When tasks fail, blockcell generates fixes, verifies them, and evolves its skills automatically."
+      },
+      "host_skills": {
+        "title": "Host + Skills",
+        "desc": "A stable Rust core handles boundaries and scheduling, while hot-swappable Rhai skills define the logic."
+      },
+      "gateway": {
+        "title": "Gateway & Hub",
+        "desc": "Run as a daemon, connect via HTTP/WS, and install new skills instantly from the community hub."
+      }
+    },
+    "process": {
+      "title": "How Evolution Happens",
+      "subtitle": "A continuous feedback loop that turns runtime failures into permanent skill upgrades.",
+      "steps": {
+        "trigger": {
+          "title": "1. Trigger",
+          "desc": "User task, cron job, or external message initiates execution."
+        },
+        "execute": {
+          "title": "2. Execute",
+          "desc": "LLM + Tools + Skills attempt to solve the problem."
+        },
+        "feedback": {
+          "title": "3. Feedback",
+          "desc": "On failure, context and errors are collected for analysis."
+        },
+        "evolve": {
+          "title": "4. Evolve",
+          "desc": "A fix is generated, verified, and hot-patched as a new Skill version."
+        }
+      }
+    },
+    "terminal": {
+      "title": "Not just a Chatbot.",
+      "subtitle": "A System.",
+      "features": {
+        "browser": {
+          "title": "Browser Automation",
+          "desc": "CDP-based control with accessibility tree snapshots for stable scraping and interaction."
+        },
+        "memory": {
+          "title": "Memory System",
+          "desc": "SQLite + FTS5 vector storage for long-term recall and fact management."
+        },
+        "subagents": {
+          "title": "Subagents",
+          "desc": "Spawn background tasks that report back when done. Don't block your main thread."
+        },
+        "safety": {
+          "title": "Safety Boundaries",
+          "desc": "Strict path permissions and schema validation. No hallucinations damaging your system."
+        }
+      },
+      "explore": "Explore all features"
+    }
+  },
+  "features": {
+    "title": "Capabilities & Features",
+    "subtitle": "A comprehensive overview of what makes blockcell a production-grade agent system.",
+    "items": {
+      "tool_calling": {
+        "title": "Tool Calling Reliability",
+        "desc": "JSON Schema validation at the registry layer. Structural returns for auditability. No more parameter hallucinations."
+      },
+      "browser": {
+        "title": "Browser Automation (CDP)",
+        "desc": "Persistent sessions, accessibility tree snapshots, and element references (@e1, @e2) for robust scraping and interaction."
+      },
+      "memory": {
+        "title": "Memory System",
+        "desc": "SQLite + FTS5 vector storage. Structured fields for scope, tags, and importance. Long-term recall that actually works."
+      },
+      "subagents": {
+        "title": "Subagents & Tasks",
+        "desc": "Offload complex, long-running workflows to background subagents. Track progress via /tasks without blocking chat."
+      },
+      "scheduling": {
+        "title": "Unified Scheduling",
+        "desc": "Cron jobs and Heartbeats inject messages into the main loop. Automation and conversation share the same context."
+      },
+      "skills": {
+        "title": "Installable Skills",
+        "desc": "One command to install new capabilities. Standardized format (meta.yaml + SKILL.md + SKILL.rhai)."
+      },
+      "gateway": {
+        "title": "Gateway + WebUI",
+        "desc": "Run as a daemon. HTTP/WS API for integrations. Beautiful WebUI for management. Turn your agent into a service."
+      },
+      "channels": {
+        "title": "Channels",
+        "desc": "Connect to Telegram, WhatsApp, Slack, Discord, and Lark. One brain, multiple interfaces."
+      },
+      "safety": {
+        "title": "Safety Boundaries",
+        "desc": "Strict workspace path isolation. Interactive confirmation mode. Gateway token auth. Security by design."
+      }
+    }
+  },
+  "architecture": {
+    "title": "System Architecture",
+    "subtitle": "Why blockcell is built as a system, not a script.",
+    "host_skills": {
+      "title": "Host + Skills Separation",
+      "desc": "blockcell splits the agent into two distinct layers:",
+      "host": "Rust Host (TCB)",
+      "skills": "Skills (Mutable)",
+      "footer": "This separation ensures the core remains stable while logic can iterate rapidly."
+    },
+    "data_flow": {
+      "title": "Unified Data Flow",
+      "desc": "Every input—whether from CLI, HTTP, Cron, or Subagents—follows the same standardized path:"
+    },
+    "upgrade": {
+      "title": "Self-Upgrade Mechanism",
+      "desc": "Upgrades are treated as a system capability with strict safety checks:",
+      "manifest": "Manifest Driven",
+      "manifest_desc": "Upgrade sources defined by JSON manifest.",
+      "verification": "Verification",
+      "verification_desc": "SHA256 checksums and Ed25519 signatures.",
+      "atomic": "Atomic Swap",
+      "atomic_desc": "File system atomic rename for seamless updates.",
+      "rollback": "Rollback",
+      "rollback_desc": "Automatic backup retention for instant recovery."
+    }
+  },
+  "innovation": {
+    "title": "Key Innovations",
+    "subtitle": "Why blockcell is different from other agent frameworks.",
+    "items": {
+      "hub": {
+        "title": "Community Hub",
+        "desc": "A decentralized network for skill distribution. Install new capabilities like 'stock_monitor' or 'researcher' with a single command. Share your own nodes and discover others."
+      },
+      "a2a": {
+        "title": "Agent-to-Agent (A2A)",
+        "desc": "Multi-node collaboration. Delegate tasks between your desktop, server, and edge devices using a standardized protocol. Distributed intelligence."
+      },
+      "ghost": {
+        "title": "Ghost Agent",
+        "desc": "A subconscious maintenance worker. The Ghost Agent runs in the background to prune memory, organize files, and sync with the community—without interrupting you."
+      },
+      "evolution": {
+        "title": "Self-Evolution",
+        "desc": "The core innovation. Blockcell doesn't just run; it learns. Runtime errors trigger a feedback loop that patches the Skill logic, verifies the fix, and deploys it."
+      },
+      "rhai": {
+        "title": "Rhai + Skills",
+        "desc": "Logic is not hardcoded in binary. It's written in Rhai, a scripting language for Rust. This makes logic portable, safe, and dynamically updateable."
+      }
+    }
+  },
+  "docs": {
+    "title": "Getting Started",
+    "subtitle": "Get blockcell up and running in minutes. Choose your preferred installation method.",
+    "install": {
+      "title": "Installation",
+      "script": {
+        "title": "Quick Install (Linux/macOS)",
+        "desc": "Installs binary to <1>~/.local/bin</1> by default.",
+        "custom": "To install to a custom directory:"
+      },
+      "source": {
+        "title": "Build from Source",
+        "prereqs": "Prerequisites"
+      },
+      "docker": {
+        "title": "Docker",
+        "desc": "Build and run completely isolated. Mount a volume to persist your workspace."
+      }
+    },
+    "config": {
+      "title": "Configuration",
+      "init": "First, initialize your workspace. This creates <1>~/.blockcell/config.json</1>.",
+      "edit": "Then edit <1>config.json</1> to add your LLM provider API key:"
+    },
+    "running": {
+      "title": "Running Modes",
+      "interactive": {
+        "title": "Interactive CLI",
+        "desc": "Best for local chat, coding, and testing. Note: Prompts for confirmation when accessing files outside workspace."
+      },
+      "gateway": {
+        "title": "Gateway Daemon",
+        "desc": "Best for long-running service. Exposes HTTP API (:18790) and WebUI (:18791). Note: Denies access outside workspace by default."
+      }
+    }
+  },
+  "examples": {
+    "title": "Skill Structure",
+    "subtitle": "A real-world example of a blockcell skill. Skills are self-contained folders with logic, configuration, and documentation.",
+    "quick_start": "Quick Start:",
+    "explainer": {
+      "logic": {
+        "title": "Logic (Rhai)",
+        "desc": "<1>SKILL.rhai</1> contains the executable logic. It runs in a sandboxed environment with access to registered tools (like <3>http_request</3>) but no direct system access."
+      },
+      "config": {
+        "title": "Config (JSON)",
+        "desc": "<1>config.json</1> defines metadata, trigger patterns, and default configuration. This allows the intent matcher to route queries to this skill."
+      },
+      "docs": {
+        "title": "Docs (Markdown)",
+        "desc": "<1>SKILL.md</1> provides human-readable documentation. It's often used by the LLM itself to understand how to use the skill effectively."
+      }
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated: February 17, 2026",
+      "intro": {
+        "title": "1. Introduction",
+        "p1": "Blockcell (\"we,\" \"our,\" or \"us\") respects your privacy. This Privacy Policy explains how we handle data when you visit our website (blockcell.ai) or use our open-source software.",
+        "p2": "<0>Important:</0> Blockcell is primarily a local-first, self-hosted software. We do not collect personal data from your local blockcell instances unless you explicitly opt-in to specific cloud features."
+      },
+      "data": {
+        "title": "2. Data We Collect",
+        "visitors": {
+          "title": "Website Visitors",
+          "p": "When you visit blockcell.ai, we may collect anonymous usage statistics (such as page views and referral sources) to improve our documentation and site performance. We do not use tracking cookies for advertising purposes."
+        },
+        "software": {
+          "title": "Software Usage",
+          "p": "The blockcell CLI and daemon run locally on your machine.",
+          "list": {
+            "local": "<0>Local Data:</0> Your conversation history, memories, and configurations are stored in <1>~/.blockcell</1> on your device. We do not have access to this data.",
+            "llm": "<0>LLM Providers:</0> When you use blockcell, your prompts are sent directly to the LLM providers you configure (e.g., OpenAI, Anthropic, OpenRouter). This data transmission is subject to the privacy policies of those respective providers."
+          }
+        }
+      },
+      "hub": {
+        "title": "3. Community Hub",
+        "p": "If you choose to publish a skill to the Blockcell Community Hub:",
+        "list": {
+          "code": "The code and metadata of the skill will be publicly visible.",
+          "author": "Your username or author name will be associated with the published skill."
+        }
+      },
+      "updates": {
+        "title": "4. Updates to This Policy",
+        "p": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page."
+      },
+      "contact": {
+        "title": "5. Contact Us",
+        "p": "If you have any questions about this Privacy Policy, please contact us at:"
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "updated": "Last updated: February 17, 2026",
+      "agreement": {
+        "title": "1. Agreement to Terms",
+        "p": "By accessing or using the blockcell website and software, you agree to be bound by these Terms of Service. If you disagree with any part of the terms, you may not access the service."
+      },
+      "license": {
+        "title": "2. Software License",
+        "p": "Blockcell is open-source software released under the <0>MIT License</0>. You are free to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, subject to the conditions of the license."
+      },
+      "responsibilities": {
+        "title": "3. User Responsibilities",
+        "p": "When using blockcell, you agree not to:",
+        "list": {
+          "illegal": "Use the software for any illegal purpose or in violation of any local, state, national, or international law.",
+          "tos": "Violate the terms of service of any LLM providers (e.g., OpenAI, Anthropic) accessed through the software.",
+          "malicious": "Distribute malicious skills or code through the Community Hub."
+        }
+      },
+      "disclaimer": {
+        "title": "4. Disclaimer of Warranties",
+        "p1": "The software is provided \"AS IS\", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability.",
+        "p2": "<0>AI Warning:</0> Blockcell uses Large Language Models (LLMs) which may produce inaccurate, offensive, or biased output. You are responsible for verifying any code or information generated by the system."
+      },
+      "law": {
+        "title": "5. Governing Law",
+        "p": "These Terms shall be governed and construed in accordance with the laws, without regard to its conflict of law provisions."
+      },
+      "changes": {
+        "title": "6. Changes to Terms",
+        "p": "We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "The self-evolving Rust agent framework. Immutable host, evolvable skills.",
+    "product": "Product",
+    "resources": "Resources",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "examples": "Examples",
+    "story": "Naming Story"
+  },
+  "story": {
+    "title": "BlockCell: Digital New Life of Modular Philosophy",
+    "back": "Back to Home",
+    "intro": "BlockCell's naming inspiration comes from the \"Replicator\" civilization in the classic sci-fi series Stargate. Its core logic lies in the perfect fusion of <1>Modules (Block) and Life Cells (Cell)</1>.",
+    "genes": {
+      "title": "Core Genes",
+      "block": {
+        "title": "Block (Modularity)",
+        "desc": "Extreme atomic disassembly, supporting rapid reconstruction and infinite expansion of macroscopic forms."
+      },
+      "cell": {
+        "title": "Cell (Vitality)",
+        "desc": "A single module possesses independent survival, information processing, and self-replication capabilities."
+      }
+    },
+    "vision": {
+      "title": "System Vision",
+      "desc": "BlockCell aims to break the rigid boundaries of traditional intelligent systems. Through the coupling of \"Block + Cell\", we create an intelligent cluster system with high robustness, distributed collaboration, and self-evolution capabilities."
+    },
+    "quote": "\"Here, evolution has no endpoint.\""
+  }
+}

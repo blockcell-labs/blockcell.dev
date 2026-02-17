@@ -1,0 +1,284 @@
+{
+  "nav": {
+    "home": "首页",
+    "features": "特性",
+    "architecture": "架构",
+    "innovation": "创新",
+    "docs": "开始使用",
+    "hub": "社区中心"
+  },
+  "home": {
+    "hero": {
+      "title_prefix": "自我进化的",
+      "title_suffix": "Rust 智能体系统",
+      "description": "一个在工作中不断变强的系统。不可变的 Rust 宿主保证稳定性，可进化的 Rhai 技能实现持续改进。",
+      "get_started": "开始使用",
+      "view_arch": "查看架构"
+    },
+    "value_props": {
+      "evolution": {
+        "title": "自我进化",
+        "desc": "错误即是经验。当任务失败时，blockcell 会自动生成修复方案，验证并通过，进而进化其技能。"
+      },
+      "host_skills": {
+        "title": "宿主 + 技能",
+        "desc": "稳定的 Rust 核心处理边界和调度，而热插拔的 Rhai 技能定义业务逻辑。"
+      },
+      "gateway": {
+        "title": "网关 & 中心",
+        "desc": "作为守护进程运行，通过 HTTP/WS 连接，并从社区中心即时安装新技能。"
+      }
+    },
+    "process": {
+      "title": "进化如何发生",
+      "subtitle": "一个将运行时故障转化为永久技能升级的持续反馈循环。",
+      "steps": {
+        "trigger": {
+          "title": "1. 触发",
+          "desc": "用户任务、定时任务或外部消息启动执行。"
+        },
+        "execute": {
+          "title": "2. 执行",
+          "desc": "LLM + 工具 + 技能尝试解决问题。"
+        },
+        "feedback": {
+          "title": "3. 反馈",
+          "desc": "失败时，收集上下文和错误用于分析。"
+        },
+        "evolve": {
+          "title": "4. 进化",
+          "desc": "生成修复，验证后作为新技能版本热补丁发布。"
+        }
+      }
+    },
+    "terminal": {
+      "title": "不只是聊天机器人。",
+      "subtitle": "是一个智能生命体。",
+      "features": {
+        "browser": {
+          "title": "浏览器自动化",
+          "desc": "基于 CDP 的控制，带有无障碍树快照，用于稳定的抓取和交互。"
+        },
+        "memory": {
+          "title": "记忆系统",
+          "desc": "SQLite + FTS5 向量存储，用于长期回忆和事实管理。"
+        },
+        "subagents": {
+          "title": "子智能体",
+          "desc": "生成后台任务，完成后报告。不阻塞主线程。"
+        },
+        "safety": {
+          "title": "安全边界",
+          "desc": "严格的路径权限和 Schema 验证。没有幻觉破坏你的系统。"
+        }
+      },
+      "explore": "探索所有特性"
+    }
+  },
+  "features": {
+    "title": "能力 & 特性",
+    "subtitle": "全面概述 blockcell 如何成为生产级智能体系统。",
+    "items": {
+      "tool_calling": { "title": "工具调用可靠性", "desc": "注册层面的 JSON Schema 验证。结构化返回以便审计。不再有参数幻觉。" },
+      "browser": { "title": "浏览器自动化 (CDP)", "desc": "持久会话、无障碍树快照和元素引用 (@e1, @e2) 实现稳健的抓取和交互。" },
+      "memory": { "title": "记忆系统", "desc": "SQLite + FTS5 向量存储。针对范围、标签和重要性的结构化字段。真正有效的长期回忆。" },
+      "subagents": { "title": "子智能体 & 任务", "desc": "将复杂、长时间运行的工作流卸载到后台子智能体。通过 /tasks 跟踪进度而不阻塞聊天。" },
+      "scheduling": { "title": "统一调度", "desc": "Cron 作业和心跳向主循环注入消息。自动化和对话共享相同的上下文。" },
+      "skills": { "title": "可安装技能", "desc": "一条命令安装新能力。标准化格式 (meta.yaml + SKILL.md + SKILL.rhai)。" },
+      "gateway": { "title": "网关 + WebUI", "desc": "作为守护进程运行。用于集成的 HTTP/WS API。用于管理的美观 WebUI。将你的智能体变成服务。" },
+      "channels": { "title": "多渠道", "desc": "连接 Telegram, WhatsApp, Slack, Discord, and Lark。一个大脑，多个接口。" },
+      "safety": { "title": "安全边界", "desc": "严格的工作区路径隔离。交互式确认模式。网关令牌认证。设计上的安全性。" }
+    }
+  },
+  "architecture": {
+    "title": "系统架构",
+    "subtitle": "为什么 blockcell 被构建为一个系统，而不是脚本。",
+    "host_skills": {
+      "title": "宿主 + 技能分离",
+      "desc": "blockcell 将智能体分为两个不同的层：",
+      "host": "Rust 宿主 (TCB)",
+      "skills": "技能 (可变)",
+      "footer": "这种分离确保了核心保持稳定，而逻辑可以快速迭代。"
+    },
+    "data_flow": {
+      "title": "统一数据流",
+      "desc": "每个输入——无论是来自 CLI、HTTP、Cron 还是子智能体——都遵循相同的标准化路径："
+    },
+    "upgrade": {
+      "title": "自我升级机制",
+      "desc": "升级被视为具有严格安全检查的系统能力：",
+      "manifest": "清单驱动",
+      "manifest_desc": "由 JSON 清单定义的升级源。",
+      "verification": "验证",
+      "verification_desc": "SHA256 校验和与 Ed25519 签名。",
+      "atomic": "原子交换",
+      "atomic_desc": "文件系统原子重命名以实现无缝更新。",
+      "rollback": "回滚",
+      "rollback_desc": "自动保留备份以实现即时恢复。"
+    }
+  },
+  "innovation": {
+    "title": "关键创新",
+    "subtitle": "为什么 blockcell 与其他智能体框架不同。",
+    "items": {
+      "hub": { "title": "社区中心", "desc": "技能分发的去中心化网络。一条命令安装 'stock_monitor' 或 'researcher' 等新能力。分享你自己的节点并发现其他节点。" },
+      "a2a": { "title": "智能体对智能体 (A2A)", "desc": "多节点协作。使用标准化协议在桌面、服务器和边缘设备之间委派任务。分布式智能。" },
+      "ghost": { "title": "幽灵智能体", "desc": "潜意识的维护工作者。幽灵智能体在后台运行以修剪记忆、整理文件并与社区同步——而不会打扰你。" },
+      "evolution": { "title": "自我进化", "desc": "核心创新。Blockcell 不只是运行；它还在学习。运行时错误触发反馈循环，修补技能逻辑，验证修复并部署。" },
+      "rhai": { "title": "Rhai + 技能", "desc": "逻辑不是硬编码在二进制文件中的。它是用 Rhai（一种 Rust 脚本语言）编写的。这使得逻辑可移植、安全且可动态更新。" }
+    }
+  },
+  "docs": {
+    "title": "开始使用",
+    "subtitle": "几分钟内让 blockcell 运行起来。选择你喜欢的安装方法。",
+    "install": {
+      "title": "安装",
+      "script": {
+        "title": "快速安装 (Linux/macOS)",
+        "desc": "默认安装二进制文件到 <1>~/.local/bin</1>。",
+        "custom": "安装到自定义目录："
+      },
+      "source": {
+        "title": "从源码编译",
+        "prereqs": "先决条件"
+      },
+      "docker": {
+        "title": "Docker",
+        "desc": "构建并完全隔离运行。挂载卷以持久化工作区。"
+      }
+    },
+    "config": {
+      "title": "配置",
+      "init": "首先，初始化你的工作区。这会创建 <1>~/.blockcell/config.json</1>。",
+      "edit": "然后编辑 <1>config.json</1> 添加你的 LLM 提供商 API 密钥："
+    },
+    "running": {
+      "title": "运行模式",
+      "interactive": {
+        "title": "交互式 CLI",
+        "desc": "最适合本地聊天、编码和测试。注意：访问工作区外文件时提示确认。"
+      },
+      "gateway": {
+        "title": "网关守护进程",
+        "desc": "最适合长时间运行的服务。暴露 HTTP API (:18790) 和 WebUI (:18791)。注意：默认拒绝访问工作区外。"
+      }
+    }
+  },
+  "examples": {
+    "title": "技能结构",
+    "subtitle": "一个 blockcell 技能的真实示例。技能是包含逻辑、配置和文档的独立文件夹。",
+    "quick_start": "快速开始：",
+    "explainer": {
+      "logic": { "title": "逻辑 (Rhai)", "desc": "<1>SKILL.rhai</1> 包含可执行逻辑。它在沙箱环境中运行，可以访问注册的工具（如 <3>http_request</3>），但不能直接访问系统。" },
+      "config": { "title": "配置 (JSON)", "desc": "<1>config.json</1> 定义元数据、触发模式和默认配置。这允许意图匹配器将查询路由到此技能。" },
+      "docs": { "title": "文档 (Markdown)", "desc": "<1>SKILL.md</1> 提供人类可读的文档。它通常被 LLM 本身用来理解如何有效使用该技能。" }
+    }
+  },
+  "legal": {
+    "privacy": {
+      "title": "隐私政策",
+      "updated": "最后更新：2026年2月17日",
+      "intro": {
+        "title": "1. 简介",
+        "p1": "Blockcell（\"我们\"）尊重您的隐私。本隐私政策说明了当您访问我们的网站 (blockcell.ai) 或使用我们的开源软件时，我们如何处理数据。",
+        "p2": "<0>重要：</0> Blockcell 主要是本地优先的自托管软件。除非您明确选择加入特定的云功能，否则我们不会从您的本地实例收集个人数据。"
+      },
+      "data": {
+        "title": "2. 我们收集的数据",
+        "visitors": {
+          "title": "网站访客",
+          "p": "当您访问 blockcell.ai 时，我们可能会收集匿名的使用统计数据（例如页面浏览量和推荐来源），以改进我们的文档和网站性能。我们不使用跟踪 Cookie 进行广告宣传。"
+        },
+        "software": {
+          "title": "软件使用",
+          "p": "blockcell CLI 和守护进程在您的机器上本地运行。",
+          "list": {
+            "local": "<0>本地数据：</0> 您的对话历史、记忆和配置存储在您设备上的 <1>~/.blockcell</1> 中。我们无法访问此数据。",
+            "llm": "<0>LLM 提供商：</0> 当您使用 blockcell 时，您的提示将直接发送给您配置的 LLM 提供商（例如 OpenAI, Anthropic, OpenRouter）。此数据传输受各自提供商的隐私政策约束。"
+          }
+        }
+      },
+      "hub": {
+        "title": "3. 社区中心",
+        "p": "如果您选择发布技能到 Blockcell 社区中心：",
+        "list": {
+          "code": "技能的代码和元数据将公开可见。",
+          "author": "您的用户名或作者姓名将与发布的技能关联。"
+        }
+      },
+      "updates": {
+        "title": "4. 本政策的更新",
+        "p": "我们可能会不时更新本隐私政策。我们将通过在此页面上发布新的隐私政策来通知您任何更改。"
+      },
+      "contact": {
+        "title": "5. 联系我们",
+        "p": "如果您对本隐私政策有任何疑问，请联系我们："
+      }
+    },
+    "terms": {
+      "title": "服务条款",
+      "updated": "最后更新：2026年2月17日",
+      "agreement": {
+        "title": "1. 协议",
+        "p": "访问或使用 blockcell 网站和软件，即表示您同意受这些服务条款的约束。如果您不同意条款的任何部分，则不得访问该服务。"
+      },
+      "license": {
+        "title": "2. 软件许可",
+        "p": "Blockcell 是根据 <0>MIT 许可证</0> 发布的开源软件。您可以自由使用、复制、修改、合并、发布、分发、再许可和/或出售软件副本，但需遵守许可证的条件。"
+      },
+      "responsibilities": {
+        "title": "3. 用户责任",
+        "p": "使用 blockcell 时，您同意不：",
+        "list": {
+          "illegal": "将软件用于任何非法目的或违反任何当地、州、国家或国际法律。",
+          "tos": "违反通过软件访问的任何 LLM 提供商（例如 OpenAI, Anthropic）的服务条款。",
+          "malicious": "通过社区中心分发恶意技能或代码。"
+        }
+      },
+      "disclaimer": {
+        "title": "4. 免责声明",
+        "p1": "本软件按\"原样\"提供，不作任何形式的明示或暗示保证，包括但不限于适销性、特定用途适用性和不侵权的保证。在任何情况下，作者或版权持有人均不对任何索赔、损害或其他责任负责。",
+        "p2": "<0>AI 警告：</0> Blockcell 使用大型语言模型 (LLM)，可能会产生不准确、冒犯性或有偏见的输出。您有责任验证系统生成的任何代码或信息。"
+      },
+      "law": {
+        "title": "5. 适用法律",
+        "p": "这些条款应受法律管辖并按其解释，而不考虑其法律冲突条款。"
+      },
+      "changes": {
+        "title": "6. 条款变更",
+        "p": "我们保留自行决定随时修改或替换这些条款的权利。在这些修订生效后继续访问或使用我们的服务，即表示您同意受修订后条款的约束。"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "自我进化的 Rust 智能体框架。不可变的宿主，可进化的技能。",
+    "product": "产品",
+    "resources": "资源",
+    "legal": "法律",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "examples": "示例",
+    "story": "命名故事"
+  },
+  "story": {
+    "title": "BlockCell：模块化哲学的数字新生命",
+    "back": "返回首页",
+    "intro": "BlockCell 的命名灵感源自经典科幻作品《星际之门》中的“复制者”文明。其核心逻辑在于将<1>模块（Block）与生命细胞（Cell）</1>的属性完美融合。",
+    "genes": {
+      "title": "核心基因",
+      "block": {
+        "title": "Block（模块性）",
+        "desc": "极致的原子级拆解，支持宏观形态的快速重构与无限扩展。"
+      },
+      "cell": {
+        "title": "Cell（生命性）",
+        "desc": "单个模块即具备独立生存、信息处理与自我复制能力。"
+      }
+    },
+    "vision": {
+      "title": "系统愿景",
+      "desc": "BlockCell 旨在打破传统智能系统的僵化边界。通过“Block + Cell”的耦合，我们创造了一个具备高鲁棒性、分布式协作以及自进化能力的智能集群系统。"
+    },
+    "quote": "“在这里，进化没有终点。”"
+  }
+}
