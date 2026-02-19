@@ -16,13 +16,13 @@ export default function HomePage() {
           loop
           playsInline
           preload="auto"
-          style={{ objectPosition: 'calc(50% + 100px) calc(50% - 300px)' }}
+          style={{ objectPosition: 'calc(50% + 100px) calc(50% - 400px)' }}
           onLoadedMetadata={(e) => {
             e.currentTarget.defaultPlaybackRate = 0.7;
             e.currentTarget.playbackRate = 0.7;
           }}
         >
-          <source src="/bg72.mp4" type="video/mp4" />
+          <source src="/bg82.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/25" />
       </div>
