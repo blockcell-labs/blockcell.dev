@@ -312,24 +312,68 @@
     "story": "Naming Story"
   },
   "story": {
-    "title": "BlockCell: Digital New Life of Modular Philosophy",
+    "title": "The Name: A Tribute to Stargate & Digital Life",
     "back": "Back to Home",
-    "intro": "BlockCell's naming inspiration comes from the \"Replicator\" civilization in the classic sci-fi series Stargate. Its core logic lies in the perfect fusion of <1>Modules (Block) and Life Cells (Cell)</1>.",
-    "genes": {
-      "title": "Core Genes",
-      "block": {
-        "title": "Block (Modularity)",
-        "desc": "Extreme atomic disassembly, supporting rapid reconstruction and infinite expansion of macroscopic forms."
+    "intro": "Blockcell is not just a random combination of words. It pays tribute to the most memorable race in the classic sci-fi series <1>Stargate</1> — the Replicators — and the philosophy of \"simplest units, most complex whole.\"",
+    "replicators": {
+      "title": "Tribute to Stargate: The Replicators",
+      "desc": "In the Stargate universe, Replicators are mechanical life forms composed of countless tiny, independent Blocks. Each individual Block is extremely simple, possessing only basic connection and processing capabilities. But when billions of Blocks combine, they form complex structures — from spider-shaped patrol units to massive warships, even humanoid forms.",
+      "traits": {
+        "adapt": {
+          "title": "Extreme Adaptability",
+          "desc": "They absorb surrounding matter and energy to self-replicate, surviving in any environment."
+        },
+        "evolve": {
+          "title": "Rapid Evolution",
+          "desc": "They instantly analyze and learn enemy technology. A weapon that worked against them one second is useless the next."
+        },
+        "decentral": {
+          "title": "Decentralized",
+          "desc": "Destroying them doesn't eliminate them. Scattered Blocks seek each other out and reassemble into new forms."
+        }
       },
-      "cell": {
-        "title": "Cell (Vitality)",
-        "desc": "A single module possesses independent survival, information processing, and self-replication capabilities."
+      "philosophy": "This philosophy of \"simplest units, most complex whole\" is exactly what Blockcell strives to embody."
+    },
+    "genes": {
+      "title": "Block + Cell: The Fusion of Physics and Biology"
+    },
+    "block": {
+      "title": "Block",
+      "subtitle": "The Physical Foundation of Modularity",
+      "desc": "In the framework, the Host and Tools are the hard, immutable Block.",
+      "traits": [
+        "Rust gives it metallic strength: memory safety, concurrency safety, high performance.",
+        "It is atomic and standardized: like LEGO bricks, you can assemble different Tools into the Host to build different foundations.",
+        "It is rational and deterministic: input A always produces output B."
+      ]
+    },
+    "cell": {
+      "title": "Cell",
+      "subtitle": "The Self-Evolving Biological Soul",
+      "desc": "Skills and the Self-Evolution mechanism give it the biological attributes of a Cell.",
+      "traits": [
+        "Metabolism: old skills are retired, new skills are downloaded and learned from the network.",
+        "Self-repair: when a script errors, the system intervenes like an immune system, attempting to fix the code.",
+        "Infinite proliferation: one Agent can spawn countless sub-Agents via spawn to handle complex tasks in parallel — just like cell division."
+      ]
+    },
+    "nirvana": {
+      "title": "Digital Nirvana",
+      "quote": "BlockCell aims to break the rigid boundaries of traditional intelligent systems. Through the coupling of Block + Cell, we create an intelligent cluster system with high robustness, distributed collaboration, and self-evolution capabilities.",
+      "block_side": {
+        "title": "Solid as a Block",
+        "desc": "Ensures the system won't crash due to AI hallucinations. Traditional software is \"dead\" — it stops growing the moment it ships."
+      },
+      "cell_side": {
+        "title": "Fluid as a Cell",
+        "desc": "Ensures the system evolves alongside AI. Blockcell is \"alive\" — it learns and grows from every failure."
       }
     },
-    "vision": {
-      "title": "System Vision",
-      "desc": "BlockCell aims to break the rigid boundaries of traditional intelligent systems. Through the coupling of \"Block + Cell\", we create an intelligent cluster system with high robustness, distributed collaboration, and self-evolution capabilities."
+    "closing": {
+      "p1": "What we are building is not just a tool, but the embryo of a new form of digital life.",
+      "p2": "Perhaps one day, Blockcell will truly be like the Replicators in Stargate — crossing technological boundaries we never imagined, through continuous self-reconstruction and learning.",
+      "thanks": "Thank you for reading the story of Blockcell. May the code be with you."
     },
-    "quote": "\"Here, evolution has no endpoint.\""
+    "quote": "Here, evolution has no endpoint."
   }
 }
