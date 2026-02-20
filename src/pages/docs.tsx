@@ -38,12 +38,12 @@ export default function DocsPage() {
                 <p className="text-muted-foreground mb-4 text-sm">
                   {t('docs.install.script.desc')}
                 </p>
-                <CodeBlock code="curl -fsSL https://raw.githubusercontent.com/blockcell-labs/blockcell/main/blockcell/install.sh | sh" />
+                <CodeBlock code="curl -fsSL https://raw.githubusercontent.com/blockcell-labs/blockcell/refs/heads/main/install.sh | sh" />
                 <p className="mt-4 text-sm text-muted-foreground">
                   {t('docs.install.script.custom')}
                 </p>
                 <CodeBlock code={`BLOCKCELL_INSTALL_DIR="$HOME/bin" \\
-  curl -fsSL https://raw.githubusercontent.com/blockcell-labs/blockcell/main/blockcell/install.sh | sh`} />
+  curl -fsSL https://raw.githubusercontent.com/blockcell-labs/blockcell/refs/heads/main/install.sh | sh`} />
               </div>
 
               {/* Method 2: Source */}
