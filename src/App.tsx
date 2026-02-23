@@ -5,6 +5,7 @@ import FeaturesPage from './pages/features';
 import ArchitecturePage from './pages/architecture';
 import InnovationPage from './pages/innovation';
 import DocsPage from './pages/docs';
+import QuickstartPage from './pages/quickstart';
 import ExamplesPage from './pages/examples';
 import PrivacyPage from './pages/legal/privacy';
 import TermsPage from './pages/legal/terms';
@@ -20,6 +21,7 @@ function App() {
           <Route path="features" element={<FeaturesPage />} />
           <Route path="architecture" element={<ArchitecturePage />} />
           <Route path="innovation" element={<InnovationPage />} />
+          <Route path="quickstart" element={<QuickstartPage />} />
           <Route path="docs" element={<DocsPage />} />
           <Route path="examples" element={<ExamplesPage />} />
           <Route path="story" element={<NamingStoryPage />} />

@@ -1,178 +1,231 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Code, Settings, Download, Box, Cpu } from 'lucide-react';
+import { BookOpen, ChevronRight } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
+import rehypeSanitize from 'rehype-sanitize';
 import { useTranslation } from 'react-i18next';
 
+interface DocItem {
+  id: string;
+  title: string;
+  file: string;
+}
+
+const zhDocs: DocItem[] = [
+  { id: '00', title: '系列目录', file: '00_index.md' },
+  { id: '01', title: '什么是 blockcell？', file: '01_what_is_blockcell.md' },
+  { id: '02', title: '5分钟上手', file: '02_quickstart.md' },
+  { id: '03', title: '工具系统', file: '03_tools_system.md' },
+  { id: '04', title: '技能（Skill）系统', file: '04_skill_system.md' },
+  { id: '05', title: '记忆系统', file: '05_memory_system.md' },
+  { id: '06', title: '多渠道接入', file: '06_channels.md' },
+  { id: '07', title: '浏览器自动化', file: '07_browser_automation.md' },
+  { id: '08', title: 'Gateway 模式', file: '08_gateway_mode.md' },
+  { id: '09', title: '自我进化', file: '09_self_evolution.md' },
+  { id: '10', title: '金融场景实战', file: '10_finance_use_case.md' },
+  { id: '11', title: '子智能体与任务并发', file: '11_subagents.md' },
+  { id: '12', title: '架构深度解析', file: '12_architecture.md' },
+  { id: '13', title: '消息处理与自进化生命周期', file: '13_message_processing_and_evolution.md' },
+  { id: '14', title: '名字由来', file: '14_name_origin.md' },
+  { id: '15', title: '幽灵智能体（Ghost Agent）', file: '15_ghost_agent.md' },
+  { id: '16', title: 'Agent2Agent 社区（Blockcell Hub）', file: '16_hub_community.md' },
+];
+
+const enDocs: DocItem[] = [
+  { id: '00', title: 'Table of Contents', file: '00_index.md' },
+  { id: '01', title: 'What is blockcell?', file: '01_what_is_blockcell.md' },
+  { id: '02', title: '5-minute Quickstart', file: '02_quickstart.md' },
+  { id: '03', title: 'Tool System', file: '03_tools_system.md' },
+  { id: '04', title: 'Skill System', file: '04_skill_system.md' },
+  { id: '05', title: 'Memory System', file: '05_memory_system.md' },
+  { id: '06', title: 'Multi-channel Access', file: '06_channels.md' },
+  { id: '07', title: 'Browser Automation', file: '07_browser_automation.md' },
+  { id: '08', title: 'Gateway Mode', file: '08_gateway_mode.md' },
+  { id: '09', title: 'Self-evolution', file: '09_self_evolution.md' },
+  { id: '10', title: 'Finance in Practice', file: '10_finance_use_case.md' },
+  { id: '11', title: 'Subagents and Task Concurrency', file: '11_subagents.md' },
+  { id: '12', title: 'Architecture Deep Dive', file: '12_architecture.md' },
+  { id: '13', title: 'Message Processing & Evolution Lifecycle', file: '13_message_processing_and_evolution.md' },
+  { id: '14', title: 'Name Origin', file: '14_name_origin.md' },
+  { id: '15', title: 'Ghost Agent', file: '15_ghost_agent.md' },
+  { id: '16', title: 'Agent2Agent Community (Blockcell Hub)', file: '16_hub_community.md' },
+];
+
 export default function DocsPage() {
-  const { t } = useTranslation();
+  const { i18n } = useTranslation();
+  const [selectedDoc, setSelectedDoc] = useState<string>('00');
+  const [content, setContent] = useState<string>('');
+  const [loading, setLoading] = useState(false);
+
+  // 根据网站语言自动设置文档语言
+  const lang = i18n.language.startsWith('zh') ? 'zh' : 'en';
+  const docs = lang === 'zh' ? zhDocs : enDocs;
+  const currentDoc = docs.find(d => d.id === selectedDoc);
+
+  useEffect(() => {
+    if (currentDoc) {
+      loadDoc(currentDoc.file);
+    }
+  }, [currentDoc, lang]);
+
+  const loadDoc = async (filename: string) => {
+    setLoading(true);
+    try {
+      const response = await fetch(`/docs/${lang}/${filename}`);
+      if (response.ok) {
+        const text = await response.text();
+        setContent(text);
+      } else {
+        setContent(`# Error\n\nFailed to load document: ${filename}`);
+      }
+    } catch (error) {
+      setContent(`# Error\n\nFailed to load document: ${error}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 处理 Markdown 内部链接点击
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // 检查是否是内部 .md 链接
+    if (href && href.endsWith('.md')) {
+      e.preventDefault();
+      
+      // 提取文件名（去掉 ./ 前缀）
+      const filename = href.replace(/^\.\//, '');
+      
+      // 从文件名中提取 ID（假设格式是 XX_title.md）
+      const match = filename.match(/^(\d+)_/);
+      if (match) {
+        const docId = match[1];
+        setSelectedDoc(docId);
+        // 滚动到顶部
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
-    <div className="py-24">
+    <div className="py-24 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16">
-          <motion.h1 
+        {/* Header */}
+        <div className="mb-8">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="flex items-center gap-3 mb-6"
           >
-            {t('docs.title')}
-          </motion.h1>
+            <BookOpen size={32} className="text-rust" />
+            <h1 className="text-4xl md:text-5xl font-bold">
+              {lang === 'zh' ? '文档中心' : 'Documentation'}
+            </h1>
+          </motion.div>
+          
           <p className="text-xl text-muted-foreground">
-            {t('docs.subtitle')}
+            {lang === 'zh' 
+              ? 'blockcell 技术文章系列：一个会自我进化的 AI 智能体框架'
+              : 'blockcell Technical Article Series: A Self-Evolving AI Agent Framework'
+            }
           </p>
         </div>
 
-        <div className="space-y-16">
-          {/* Installation */}
-          <section>
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <Download size={24} className="text-rust" /> 
-              {t('docs.install.title')}
-            </h2>
+        <div className="grid lg:grid-cols-[300px_1fr] gap-8">
+          {/* Sidebar */}
+          <aside className="lg:sticky lg:top-24 h-fit">
+            <div className="bg-card border border-border rounded-xl p-4">
+              <h3 className="font-bold mb-4 text-sm uppercase tracking-wider text-muted-foreground">
+                {lang === 'zh' ? '目录' : 'Contents'}
+              </h3>
+              <nav className="space-y-1">
+                {docs.map((doc) => (
+                  <button
+                    key={doc.id}
+                    onClick={() => setSelectedDoc(doc.id)}
+                    className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex items-center gap-2 ${
+                      selectedDoc === doc.id
+                        ? 'bg-rust/10 text-rust font-medium'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    }`}
+                  >
+                    <span className="text-xs opacity-60">{doc.id}</span>
+                    <span className="flex-1">{doc.title}</span>
+                    {selectedDoc === doc.id && <ChevronRight size={16} />}
+                  </button>
+                ))}
+              </nav>
+            </div>
+          </aside>
 
-            <div className="space-y-8">
-              {/* Method 1: Script */}
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Terminal size={18} className="text-cyber" />
-                  {t('docs.install.script.title')}
-                </h3>
-                <p className="text-muted-foreground mb-4 text-sm">
-                  {t('docs.install.script.desc')}
-                </p>
-                <CodeBlock code="curl -fsSL https://raw.githubusercontent.com/blockcell-labs/blockcell/refs/heads/main/install.sh | sh" />
-                <p className="mt-4 text-sm text-muted-foreground">
-                  {t('docs.install.script.custom')}
-                </p>
-                <CodeBlock code={`BLOCKCELL_INSTALL_DIR="$HOME/bin" \\
-  curl -fsSL https://raw.githubusercontent.com/blockcell-labs/blockcell/refs/heads/main/install.sh | sh`} />
-              </div>
-
-              {/* Method 2: Source */}
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Code size={18} className="text-orange-400" />
-                  {t('docs.install.source.title')}
-                </h3>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-medium mb-2 text-sm text-muted-foreground">{t('docs.install.source.prereqs')}</h4>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground ml-2">
-                      <li>Rust 1.75+</li>
-                      <li>Node.js 20+ (for WebUI)</li>
-                      <li>Optional: Python 3 + matplotlib (for charts)</li>
-                    </ul>
-                  </div>
-                  <CodeBlock code={`# Clone repository
-git clone https://github.com/blockcell-labs/blockcell.git
-cd blockcell
-
-# Build WebUI
-cd webui && npm install && npm run build && cd ..
-
-# Build Binary
-cargo build --release`} />
+          {/* Content */}
+          <main>
+            <motion.div
+              key={`${lang}-${selectedDoc}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="bg-card border border-border rounded-xl p-8 md:p-12"
+            >
+              {loading ? (
+                <div className="flex items-center justify-center py-20">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-rust"></div>
                 </div>
-              </div>
-
-              {/* Method 3: Docker */}
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
-                  <Box size={18} className="text-blue-400" />
-                  {t('docs.install.docker.title')}
-                </h3>
-                <div className="space-y-4">
-                  <p className="text-sm text-muted-foreground">
-                    {t('docs.install.docker.desc')}
-                  </p>
-                  <CodeBlock code={`# Build Image
-docker build -t blockcell .
-
-# Run Interactive Agent
-docker run -it \\
-  -v $HOME/.blockcell:/home/blockcell/.blockcell \\
-  blockcell agent
-
-# Run Gateway (Server)
-docker run -d \\
-  -v $HOME/.blockcell:/home/blockcell/.blockcell \\
-  -p 18790:18790 -p 18791:18791 \\
-  blockcell gateway`} />
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Configuration */}
-          <section>
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <Settings size={24} className="text-gray-400" /> 
-              {t('docs.config.title')}
-            </h2>
-            <div className="space-y-6">
-              <p className="text-muted-foreground">
-                {t('docs.config.init')}
-              </p>
-              <CodeBlock code="blockcell onboard" />
-              
-              <p className="text-muted-foreground">
-                {t('docs.config.edit')}
-              </p>
-              <CodeBlock language="json" code={`{
-  "providers": {
-    "openrouter": {
-      "apiKey": "sk-or-...",
-      "apiBase": "https://openrouter.ai/api/v1"
-    },
-    "openai": {
-      "apiKey": "sk-..."
-    }
-  },
-  "agents": {
-    "defaults": {
-      "model": "anthropic/claude-sonnet-4-20250514"
-    }
-  }
-}`} />
-            </div>
-          </section>
-
-          {/* Running Modes */}
-          <section>
-            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <Cpu size={24} className="text-purple-400" /> 
-              {t('docs.running.title')}
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h3 className="font-bold mb-4">{t('docs.running.interactive.title')}</h3>
-                <CodeBlock code="blockcell agent" />
-                <p className="mt-4 text-sm text-muted-foreground">
-                  {t('docs.running.interactive.desc')}
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-xl p-6">
-                <h3 className="font-bold mb-4">{t('docs.running.gateway.title')}</h3>
-                <CodeBlock code="blockcell gateway" />
-                <p className="mt-4 text-sm text-muted-foreground">
-                  {t('docs.running.gateway.desc')}
-                </p>
-              </div>
-            </div>
-          </section>
+              ) : (
+                <article className="prose prose-invert prose-rust max-w-none">
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                    components={{
+                      a: ({ node, ...props }) => {
+                        const href = props.href || '';
+                        const isExternal = href.startsWith('http');
+                        const isMdLink = href.endsWith('.md');
+                        
+                        return (
+                          <a
+                            {...props}
+                            className="text-rust hover:text-rust-light transition-colors cursor-pointer"
+                            onClick={(e) => {
+                              if (isMdLink && !isExternal) {
+                                handleLinkClick(e, href);
+                              }
+                            }}
+                            target={isExternal ? '_blank' : undefined}
+                            rel={isExternal ? 'noopener noreferrer' : undefined}
+                          />
+                        );
+                      },
+                      code: ({ node, inline, ...props }: any) =>
+                        inline ? (
+                          <code className="px-1.5 py-0.5 rounded bg-muted text-rust text-sm" {...props} />
+                        ) : (
+                          <code className="block" {...props} />
+                        ),
+                      pre: ({ node, ...props }) => (
+                        <pre className="bg-black/50 border border-border rounded-lg p-4 overflow-x-auto" {...props} />
+                      ),
+                      table: ({ node, ...props }) => (
+                        <div className="overflow-x-auto">
+                          <table className="min-w-full border-collapse" {...props} />
+                        </div>
+                      ),
+                      th: ({ node, ...props }) => (
+                        <th className="border border-border bg-muted px-4 py-2 text-left" {...props} />
+                      ),
+                      td: ({ node, ...props }) => (
+                        <td className="border border-border px-4 py-2" {...props} />
+                      ),
+                    }}
+                  >
+                    {content}
+                  </ReactMarkdown>
+                </article>
+              )}
+            </motion.div>
+          </main>
         </div>
       </div>
-    </div>
-  );
-}
-
-function CodeBlock({ code, language = 'bash' }: { code: string, language?: string }) {
-  return (
-    <div className="rounded-lg bg-black/50 border border-border p-4 font-mono text-sm overflow-x-auto relative group">
-      <div className="absolute top-2 right-2 px-2 py-1 rounded text-[10px] bg-border text-muted-foreground uppercase">
-        {language}
-      </div>
-      <pre>
-        <code>{code}</code>
-      </pre>
     </div>
   );
 }

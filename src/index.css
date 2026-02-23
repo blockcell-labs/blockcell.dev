@@ -42,3 +42,90 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Markdown Prose Styles */
+@layer components {
+  .prose-rust {
+    @apply text-foreground;
+  }
+  
+  .prose-rust h1 {
+    @apply text-3xl font-bold mb-6 mt-8 text-foreground border-b border-border pb-3;
+  }
+  
+  .prose-rust h2 {
+    @apply text-2xl font-bold mb-4 mt-8 text-foreground border-b border-border pb-2;
+  }
+  
+  .prose-rust h3 {
+    @apply text-xl font-bold mb-3 mt-6 text-foreground;
+  }
+  
+  .prose-rust h4 {
+    @apply text-lg font-semibold mb-2 mt-4 text-foreground;
+  }
+  
+  .prose-rust p {
+    @apply mb-4 leading-7 text-muted-foreground;
+  }
+  
+  .prose-rust a {
+    @apply text-rust hover:text-rust-light transition-colors underline;
+  }
+  
+  .prose-rust ul {
+    @apply list-disc list-inside mb-4 space-y-2 text-muted-foreground;
+  }
+  
+  .prose-rust ol {
+    @apply list-decimal list-inside mb-4 space-y-2 text-muted-foreground;
+  }
+  
+  .prose-rust li {
+    @apply leading-7;
+  }
+  
+  .prose-rust blockquote {
+    @apply border-l-4 border-rust pl-4 italic my-4 text-muted-foreground;
+  }
+  
+  .prose-rust code {
+    @apply px-1.5 py-0.5 rounded bg-muted text-rust text-sm font-mono;
+  }
+  
+  .prose-rust pre {
+    @apply bg-black/50 border border-border rounded-lg p-4 overflow-x-auto mb-4;
+  }
+  
+  .prose-rust pre code {
+    @apply bg-transparent p-0 text-foreground;
+  }
+  
+  .prose-rust table {
+    @apply w-full border-collapse mb-4;
+  }
+  
+  .prose-rust th {
+    @apply border border-border bg-muted px-4 py-2 text-left font-semibold;
+  }
+  
+  .prose-rust td {
+    @apply border border-border px-4 py-2;
+  }
+  
+  .prose-rust hr {
+    @apply border-border my-8;
+  }
+  
+  .prose-rust img {
+    @apply rounded-lg my-4 max-w-full;
+  }
+  
+  .prose-rust strong {
+    @apply font-bold text-foreground;
+  }
+  
+  .prose-rust em {
+    @apply italic;
+  }
+}

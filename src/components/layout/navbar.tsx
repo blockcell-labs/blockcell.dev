@@ -18,6 +18,7 @@ export function Navbar() {
     { name: t('nav.features'), path: '/features' },
     { name: t('nav.architecture'), path: '/architecture' },
     { name: t('nav.innovation'), path: '/innovation' },
+    { name: t('nav.quickstart'), path: '/quickstart' },
     { name: t('nav.docs'), path: '/docs' },
   ];
 
