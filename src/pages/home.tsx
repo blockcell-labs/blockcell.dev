@@ -9,21 +9,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          style={{ objectPosition: 'calc(50% + 100px) calc(50% - 400px)' }}
-          onLoadedMetadata={(e) => {
-            e.currentTarget.defaultPlaybackRate = 0.7;
-            e.currentTarget.playbackRate = 0.7;
+        <div 
+          className="absolute inset-0 h-full w-full bg-cover"
+          style={{ 
+            backgroundImage: 'url(/story-bg.jpg)',
+            backgroundPosition: 'calc(50% - 50px) calc(50% - 300px)'
           }}
-        >
-          <source src="/bg82.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-black/25" />
       </div>
 
