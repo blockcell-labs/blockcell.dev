@@ -31,6 +31,11 @@ const zhDocs: DocItem[] = [
   { id: '14', title: '名字由来', file: '14_name_origin.md' },
   { id: '15', title: '幽灵智能体（Ghost Agent）', file: '15_ghost_agent.md' },
   { id: '16', title: 'Agent2Agent 社区（Blockcell Hub）', file: '16_hub_community.md' },
+  { id: '17', title: 'CLI 参考手册', file: '17_cli_reference.md' },
+  { id: '18', title: '代理与 LLM Provider 配置', file: '18_proxy_and_provider_config.md' },
+  { id: '19', title: 'MCP Server 集成', file: '19_mcp_servers.md' },
+  { id: '20', title: 'Provider Pool - 多模型高可用配置', file: '20_provider_pool.md' },
+  { id: '21', title: 'intentRouter 多 Profile 配置指南', file: '21_intent_router_profiles.md' },
 ];
 
 const enDocs: DocItem[] = [
@@ -51,6 +56,11 @@ const enDocs: DocItem[] = [
   { id: '14', title: 'Name Origin', file: '14_name_origin.md' },
   { id: '15', title: 'Ghost Agent', file: '15_ghost_agent.md' },
   { id: '16', title: 'Agent2Agent Community (Blockcell Hub)', file: '16_hub_community.md' },
+  { id: '17', title: 'CLI Reference', file: '17_cli_reference.md' },
+  { id: '18', title: 'Proxy and Provider Configuration', file: '18_proxy_and_provider_config.md' },
+  { id: '19', title: 'MCP Server Integration', file: '19_mcp_servers.md' },
+  { id: '20', title: 'Provider Pool - Multi-Model High Availability', file: '20_provider_pool.md' },
+  { id: '21', title: 'intentRouter Multi-Profile Guide', file: '21_intent_router_profiles.md' },
 ];
 
 export default function DocsPage() {
@@ -125,8 +135,8 @@ export default function DocsPage() {
           
           <p className="text-xl text-muted-foreground">
             {lang === 'zh' 
-              ? 'blockcell 技术文章系列：一个会自我进化的 AI 智能体框架'
-              : 'blockcell Technical Article Series: A Self-Evolving AI Agent Framework'
+              ? 'blockcell 官方文档与技术文章索引，覆盖从快速上手到架构、CLI、MCP、Provider Pool 与 intentRouter 的完整主题。'
+              : 'The official blockcell docs and article index, covering everything from quickstart to architecture, CLI, MCP, provider pools, and intentRouter.'
             }
           </p>
         </div>

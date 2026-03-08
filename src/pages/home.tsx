@@ -181,15 +181,15 @@ export default function HomePage() {
                 <span className="ml-2 text-xs text-muted-foreground">blockcell — agent</span>
               </div>
               <div className="p-6 space-y-2 text-slate-300">
-                <p><span className="text-green-400">➜</span> <span className="text-blue-400">~</span> blockcell onboard</p>
-                <p className="text-muted-foreground">Initializing workspace at ~/.blockcell...</p>
-                <p className="text-green-400">✔ Config created</p>
+                <p><span className="text-green-400">➜</span> <span className="text-blue-400">~</span> blockcell setup</p>
+                <p className="text-muted-foreground">Configuring provider and validating workspace...</p>
+                <p className="text-green-400">✔ Provider configured</p>
                 <p className="text-green-400">✔ Workspace ready</p>
                 <p><span className="text-green-400">➜</span> <span className="text-blue-400">~</span> blockcell skills install stock_monitor</p>
                 <p className="text-muted-foreground">Downloading stock_monitor from hub...</p>
                 <p className="text-green-400">✔ Skill 'stock_monitor' v1.2.0 installed</p>
                 <p><span className="text-green-400">➜</span> <span className="text-blue-400">~</span> blockcell agent</p>
-                <p className="text-rust">blockcell v0.1.0</p>
+                <p className="text-rust">blockcell v0.1.4</p>
                 <p className="animate-pulse">_</p>
               </div>
             </div>
