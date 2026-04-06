@@ -90,7 +90,7 @@
       },
       "memory": {
         "title": "Memory System",
-        "desc": "SQLite + FTS5 vector storage. Structured fields for scope, tags, and importance. Long-term recall that actually works."
+        "desc": "SQLite + FTS5 + vector index. Structured fields for scope, tags, and importance. Long-term semantic recall that actually works."
       },
       "subagents": {
         "title": "Subagents & Tasks",
@@ -102,7 +102,7 @@
       },
       "skills": {
         "title": "Installable Skills",
-        "desc": "One command to install new capabilities. Standardized format (meta.yaml + SKILL.md + SKILL.rhai)."
+        "desc": "One command to install new capabilities. Standardized format (meta.yaml + SKILL.md + SKILL.rhai). Full version management, auditing, and evolution support."
       },
       "gateway": {
         "title": "Gateway + WebUI",
@@ -110,7 +110,7 @@
       },
       "channels": {
         "title": "Channels",
-        "desc": "Connect to Telegram, WhatsApp, Slack, Discord, and Lark. One brain, multiple interfaces."
+        "desc": "Connect to Telegram, WhatsApp, Slack, Discord, Lark, Weixin, QQ, and NapCatQQ. One brain, multiple interfaces."
       },
       "safety": {
         "title": "Safety Boundaries",

@@ -11,7 +11,7 @@ export default function QuickstartPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold mb-6"
           >
-            Quickstart · blockcell 0.1.4
+            Quickstart · blockcell 0.1.5
           </motion.h1>
           <p className="text-xl text-muted-foreground">
             参考最新版 `02_quickstart.md` 整理：优先使用 `blockcell setup`，5 分钟完成安装、配置、首次对话和 WebUI 启动。
@@ -148,7 +148,7 @@ docker run -d \\
   }
 }`} />
               <p className="text-sm text-muted-foreground">
-                如果你坚持使用传统初始化方式，也可以执行 `blockcell onboard` 后手动编辑配置，但 `0.1.4` 更推荐 `setup`。
+                如果你坚持使用传统初始化方式，也可以执行 `blockcell onboard` 后手动编辑配置，但 `0.1.5` 更推荐 `setup`。
               </p>
             </div>
           </section>

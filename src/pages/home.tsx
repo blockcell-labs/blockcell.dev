@@ -189,7 +189,7 @@ export default function HomePage() {
                 <p className="text-muted-foreground">Downloading stock_monitor from hub...</p>
                 <p className="text-green-400">✔ Skill 'stock_monitor' v1.2.0 installed</p>
                 <p><span className="text-green-400">➜</span> <span className="text-blue-400">~</span> blockcell agent</p>
-                <p className="text-rust">blockcell v0.1.4</p>
+                <p className="text-rust">blockcell v0.1.5</p>
                 <p className="animate-pulse">_</p>
               </div>
             </div>

@@ -1,5 +1,23 @@
 # 更新日志
 
+## 2026-04-06 - 同步 blockcell v0.1.5
+
+### 文档同步
+- 同步 zh 文档 00-26（新增 22_path_access_policy、23_weixin_integration、24_skill_beginner、25_skill_intermediate、26_skill_advanced）
+- 同步 en 文档 00-23（新增 22_path_access_policy、23_weixin_integration）
+- 更新全部已有文档至最新版本
+
+### 功能更新
+- 新增渠道：微信（Weixin）、QQ、NapCatQQ
+- 记忆系统升级：支持向量索引（SQLite + FTS5 + vector index）
+- 技能系统增强：版本管理、审计与自进化能力
+- 版本号更新至 v0.1.5
+
+### 文档导航更新
+- 文档侧边栏新增：路径访问策略、微信集成指南、技能开发入门/进阶/高级
+
+---
+
 ## 2026-02-23 - 文档系统优化
 
 ### 新增功能

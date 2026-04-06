@@ -36,6 +36,11 @@ const zhDocs: DocItem[] = [
   { id: '19', title: 'MCP Server 集成', file: '19_mcp_servers.md' },
   { id: '20', title: 'Provider Pool - 多模型高可用配置', file: '20_provider_pool.md' },
   { id: '21', title: 'intentRouter 多 Profile 配置指南', file: '21_intent_router_profiles.md' },
+  { id: '22', title: '路径访问策略', file: '22_path_access_policy.md' },
+  { id: '23', title: '微信集成指南', file: '23_weixin_integration.md' },
+  { id: '24', title: '技能开发入门', file: '24_skill_beginner.md' },
+  { id: '25', title: '技能开发进阶', file: '25_skill_intermediate.md' },
+  { id: '26', title: '技能开发高级', file: '26_skill_advanced.md' },
 ];
 
 const enDocs: DocItem[] = [
@@ -61,6 +66,8 @@ const enDocs: DocItem[] = [
   { id: '19', title: 'MCP Server Integration', file: '19_mcp_servers.md' },
   { id: '20', title: 'Provider Pool - Multi-Model High Availability', file: '20_provider_pool.md' },
   { id: '21', title: 'intentRouter Multi-Profile Guide', file: '21_intent_router_profiles.md' },
+  { id: '22', title: 'Path Access Policy', file: '22_path_access_policy.md' },
+  { id: '23', title: 'Weixin Integration Guide', file: '23_weixin_integration.md' },
 ];
 
 export default function DocsPage() {

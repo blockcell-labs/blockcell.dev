@@ -180,7 +180,7 @@ DeepSeek 的 API 非常便宜，适合测试：
   "providers": {
     "kimi": {
       "apiKey": "sk-你的Kimi密钥",
-      "apiBase": "https://api.moonshot.ai/v1"
+      "apiBase": "https://api.moonshot.cn/v1"
     }
   },
   "agents": {

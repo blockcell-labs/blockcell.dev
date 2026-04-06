@@ -82,12 +82,12 @@
     "items": {
       "tool_calling": { "title": "工具调用可靠性", "desc": "注册层面的 JSON Schema 验证。结构化返回以便审计。不再有参数幻觉。" },
       "browser": { "title": "浏览器自动化 (CDP)", "desc": "持久会话、无障碍树快照和元素引用 (@e1, @e2) 实现稳健的抓取和交互。" },
-      "memory": { "title": "记忆系统", "desc": "SQLite + FTS5 向量存储。针对范围、标签和重要性的结构化字段。真正有效的长期回忆。" },
+      "memory": { "title": "记忆系统", "desc": "SQLite + FTS5 + 向量索引。针对范围、标签和重要性的结构化字段。真正有效的长期语义检索。" },
       "subagents": { "title": "子智能体 & 任务", "desc": "将复杂、长时间运行的工作流卸载到后台子智能体。通过 /tasks 跟踪进度而不阻塞聊天。" },
       "scheduling": { "title": "统一调度", "desc": "Cron 作业和心跳向主循环注入消息。自动化和对话共享相同的上下文。" },
-      "skills": { "title": "可安装技能", "desc": "一条命令安装新能力。标准化格式 (meta.yaml + SKILL.md + SKILL.rhai)。" },
+      "skills": { "title": "可安装技能", "desc": "一条命令安装新能力。标准化格式 (meta.yaml + SKILL.md + SKILL.rhai)。支持版本管理、审计和自进化。" },
       "gateway": { "title": "网关 + WebUI", "desc": "作为守护进程运行。用于集成的 HTTP/WS API。用于管理的美观 WebUI。将你的智能体变成服务。" },
-      "channels": { "title": "多渠道", "desc": "连接 Telegram, WhatsApp, Slack, Discord, and Lark。一个大脑，多个接口。" },
+      "channels": { "title": "多渠道", "desc": "连接 Telegram, WhatsApp, Slack, Discord, Lark, 微信（Weixin）、QQ、NapCatQQ。一个大脑，多个接口。" },
       "safety": { "title": "安全边界", "desc": "严格的工作区路径隔离。交互式确认模式。网关令牌认证。设计上的安全性。" }
     }
   },
