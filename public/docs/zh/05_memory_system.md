@@ -23,7 +23,7 @@ blockcell 的记忆系统基于 **SQLite 主存储 + FTS5 全文搜索 + 可选�
 ~/.blockcell/workspace/memory/memory.db
 ```
 
-这是一个本地 SQLite 数据库，完全在你的电脑上，不会上传到任何服务器。当前实现还会在需要时维护一条向量同步队列，用于把记忆同步到可选的 LanceDB 向量索引。
+这是一个本地 SQLite 数据库，完全在你的电脑上，不会上传到任何服务器。当前实现还会在需要时维护一条向量同步队列，用于把记忆同步到可选的 RabitQ 向量索引。
 
 ### 数据库结构
 
@@ -57,7 +57,7 @@ CREATE TABLE memory_vector_queue (
   operation TEXT NOT NULL,
   attempts INTEGER NOT NULL DEFAULT 0,
   last_error TEXT,
-  updated_at INTEGER NOT NULL
+  updated_at TEXT NOT NULL
 );
 ```
 
@@ -154,7 +154,7 @@ blockcell 把记忆分为两个维度：
       "enabled": true,
       "provider": "openai",
       "model": "text-embedding-3-small",
-      "uri": "./memory/vectors.lancedb",
+      "uri": "./memory/vectors.rabitq",
       "table": "memory_vectors"
     }
   }
@@ -166,12 +166,12 @@ blockcell 把记忆分为两个维度：
 - `enabled`：是否开启向量 runtime，默认 `false`
 - `provider`：负责 embeddings 的 provider 名称，必须先在 `providers` 里配置好
 - `model`：embedding 模型名，不能为空
-- `uri`：LanceDB 索引路径，建议使用工作区相对路径
+- `uri`：RabitQ 索引路径，建议使用工作区相对路径
 - `table`：向量表名，默认是 `memory_vectors`，一般可以不写
 
 如果你把 `provider` 写成 `openai`，那还需要在 `providers.openai` 里配好 API key；换成其他 OpenAI-compatible provider 时，也要先把对应 provider 配好。
 
-启用后，blockcell 会先用该 provider 生成 embedding，再把记忆同步到 LanceDB 向量索引；检索时会把 FTS5 和向量候选做融合排序。如果 `provider` 或 `model` 没配完整，或者 provider 不支持 OpenAI-compatible embeddings，向量 runtime 会直接报错。
+启用后，blockcell 会先用该 provider 生成 embedding，再把记忆同步到 RabitQ 向量索引；检索时会把 FTS5 和向量候选做融合排序。如果 `provider` 或 `model` 没配完整，或者 provider 不支持 OpenAI-compatible embeddings，向量 runtime 会直接报错。
 
 常见建议：
 
@@ -335,7 +335,7 @@ blockcell 选择 SQLite 主存储的理由：
 4. **快速**：SQLite 的读写性能对于记忆场景绰绰有余
 5. **可靠**：SQLite 是世界上使用最广泛的数据库之一
 
-向量索引现在是可选增强层：开启后，blockcell 会把记忆同步到 LanceDB，并在检索阶段做混合召回；不开启时仍然可以完全依赖 SQLite + FTS5 工作。
+向量索引现在是可选增强层：开启后，blockcell 会把记忆同步到 RabitQ，并在检索阶段做混合召回；不开启时仍然可以完全依赖 SQLite + FTS5 工作。
 
 ---
 

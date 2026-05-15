@@ -22,7 +22,7 @@ function App() {
           <Route path="architecture" element={<ArchitecturePage />} />
           <Route path="innovation" element={<InnovationPage />} />
           <Route path="quickstart" element={<QuickstartPage />} />
-          <Route path="docs" element={<DocsPage />} />
+          <Route path="docs/*" element={<DocsPage />} />
           <Route path="examples" element={<ExamplesPage />} />
           <Route path="story" element={<NamingStoryPage />} />
           <Route path="legal/privacy" element={<PrivacyPage />} />

@@ -10,6 +10,12 @@ export default function InnovationPage() {
 
   const innovations = [
     {
+      icon: Dna,
+      title: t('innovation.items.evolution.title'),
+      description: t('innovation.items.evolution.desc'),
+      Visual: EvolutionVisual
+    },
+    {
       icon: Network,
       title: t('innovation.items.hub.title'),
       description: t('innovation.items.hub.desc'),
@@ -26,12 +32,6 @@ export default function InnovationPage() {
       title: t('innovation.items.ghost.title'),
       description: t('innovation.items.ghost.desc'),
       Visual: GhostVisual
-    },
-    {
-      icon: Dna,
-      title: t('innovation.items.evolution.title'),
-      description: t('innovation.items.evolution.desc'),
-      Visual: EvolutionVisual
     },
     {
       icon: FileCode,

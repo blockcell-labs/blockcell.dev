@@ -21,6 +21,8 @@ fi
 # 创建目标目录
 mkdir -p "$TARGET_DIR/zh"
 mkdir -p "$TARGET_DIR/en"
+mkdir -p "$TARGET_DIR/zh/channels"
+mkdir -p "$TARGET_DIR/en/channels"
 
 # 同步中文文档
 echo "📄 同步中文文档..."
@@ -32,9 +34,15 @@ echo "📄 同步英文文档..."
 cp "$BLOCKCELL_DOCS/en"/*.md "$TARGET_DIR/en/"
 echo "✅ 英文文档同步完成"
 
+# 同步渠道配置指南
+echo "📡 同步渠道配置指南..."
+cp "$BLOCKCELL_DOCS/channels/zh"/*.md "$TARGET_DIR/zh/channels/"
+cp "$BLOCKCELL_DOCS/channels/en"/*.md "$TARGET_DIR/en/channels/"
+echo "✅ 渠道配置指南同步完成"
+
 # 统计文档数量
-ZH_COUNT=$(ls -1 "$TARGET_DIR/zh"/*.md 2>/dev/null | wc -l)
-EN_COUNT=$(ls -1 "$TARGET_DIR/en"/*.md 2>/dev/null | wc -l)
+ZH_COUNT=$(find "$TARGET_DIR/zh" -name '*.md' -type f | wc -l)
+EN_COUNT=$(find "$TARGET_DIR/en" -name '*.md' -type f | wc -l)
 
 echo ""
 echo "📊 同步统计："
